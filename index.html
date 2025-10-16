@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume - Aditya 'Captain Cross' Kumar</title>
+    <!-- Chosen Palette: Energetic Professional (Violet, Amber, Slate) -->
+    <!-- Application Structure Plan: A single-page dashboard designed to showcase core competencies thematically rather than purely chronologically. The structure includes a hero section with key metrics, an interactive skills overview, a filterable career timeline, and a visual project gallery. This non-linear, task-oriented design was chosen to allow recruiters to quickly access the most relevant information based on their needs (e.g., filter by "Business Development" to see all related achievements), enhancing usability and highlighting key qualifications more effectively than a static document. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        .brand-logo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            height: 8rem;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-900">
+                Aditya <span class="text-violet-600">'Captain Cross'</span> Kumar
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#overview" class="text-slate-600 hover:text-violet-600 transition">Overview</a>
+                <a href="#skills" class="text-slate-600 hover:text-violet-600 transition">Core Skills</a>
+                <a href="#journey" class="text-slate-600 hover:text-violet-600 transition">Career Journey</a>
+                <a href="#accomplishments" class="text-slate-600 hover:text-violet-600 transition">Accomplishments</a>
+                <a href="#projects" class="text-slate-600 hover:text-violet-600 transition">Key Projects</a>
+                <a href="#contact" class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#overview" class="block text-slate-600 hover:text-violet-600 transition">Overview</a>
+            <a href="#skills" class="block text-slate-600 hover:text-violet-600 transition">Core Skills</a>
+            <a href="#journey" class="block text-slate-600 hover:text-violet-600 transition">Career Journey</a>
+            <a href="#accomplishments" class="block text-slate-600 hover:text-violet-600 transition">Accomplishments</a>
+            <a href="#projects" class="block text-slate-600 hover:text-violet-600 transition">Key Projects</a>
+            <a href="#contact" class="block bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition text-center">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="hero" class="text-center mb-24">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-slate-900 leading-tight">Business Development & Creator Partnerships Leader</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Specializing in Gaming, Esports, and the Creator Economy with a proven track record of driving global growth and building massive communities.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <p class="text-violet-600 text-4xl font-bold" data-target="8">0+</p>
+                    <p class="text-slate-500 mt-2">Years of Experience</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <p class="text-violet-600 text-4xl font-bold"><span data-target="1">0</span>B+</p>
+                    <p class="text-slate-500 mt-2">Campaign Impressions</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <p class="text-violet-600 text-4xl font-bold" data-target="200">0K+</p>
+                    <p class="text-slate-500 mt-2">Community Members Built</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="mb-24 scroll-mt-20">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Professional Overview</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">This section provides a visual summary of my core competencies and professional background, showcasing the blend of skills that enables me to deliver high-impact results in the fast-paced creator economy.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <p class="text-slate-600 leading-relaxed">As a remote-first operator with extensive experience in international client relations across the US, EU, and Asia, I excel at async collaboration and driving revenue growth. My professional identity, 'Captain Cross', is recognized within the gaming industry for authentic creator outreach and scaling communities from the ground up. This identity, which includes my background as an **active streamer and cosplayer**, gives me unparalleled insight into the creator ecosystem. I combine strategic business development with hands-on campaign execution, consistently exceeding targets for major brands like Intel, Riot Games, and Samsung. My unique background as both a marketer and a content creator provides deep empathy and insight into building successful, long-term partnerships.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <div class="chart-container">
+                        <canvas id="skills-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Core Skills & Expertise</h2>
+                 <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Here you can explore my primary skill sets. Click on a skill to filter the Career Journey and Key Projects sections below, highlighting experiences where that specific expertise was critical to success.</p>
+            </div>
+            <div id="skills-filter" class="flex flex-wrap justify-center gap-4">
+            </div>
+        </section>
+
+        <section id="journey" class="mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Career Journey</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Explore my professional history through this interactive timeline. Each entry details my responsibilities and key achievements. Click on any role to expand and view the full details.</p>
+            </div>
+            <div id="timeline-container" class="relative border-l-2 border-violet-200 pl-8 space-y-12">
+            </div>
+        </section>
+
+        <section id="accomplishments" class="mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Key Accomplishments</h2>
+                 <p class="text-slate-600 mt-2 max-w-2xl mx-auto">A few standout moments and recognitions from my career that highlight my impact and standing within the gaming and tech communities.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
+                    <div class="text-4xl mb-4 text-amber-500">🏆</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Aorus Voice of Gaming</h3>
+                    <p class="text-slate-600">Named "Aorus Voice of Gaming 2019," recognizing my influence and contribution to the Indian gaming community.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
+                    <div class="text-4xl mb-4 text-amber-500">🖥️</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Nvidia Presenter</h3>
+                    <p class="text-slate-600">Invited by Nvidia to present to Indian System Integrators on the importance of gamers and social media in the tech ecosystem.</p>
+                </div>
+                 <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
+                    <div class="text-4xl mb-4 text-amber-500">🎮</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Twitch Affiliate</h3>
+                    <p class="text-slate-600">Achieved Affiliate status on Twitch.tv through consistent content creation, streaming, and community engagement.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Key Projects & Brand Partnerships</h2>
+                 <p class="text-slate-600 mt-2 max-w-2xl mx-auto">This gallery highlights some of the major global brands I've had the privilege to partner with. Hover over each brand to see a brief description of our collaborative projects and the impact delivered.</p>
+            </div>
+            <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center bg-white p-12 rounded-xl shadow-lg border border-slate-200 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Let's Connect</h2>
+            <p class="text-slate-600 mb-8 max-w-xl mx-auto">I'm actively seeking remote international roles where I can leverage my experience to drive growth. Let's discuss how I can bring value to your team.</p>
+            
+            <!-- Professional Contact Line -->
+            <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-4">
+                 <a href="mailto:CaptainCrossHere@gmail.com" class="text-violet-600 hover:underline">CaptainCrossHere@gmail.com</a>
+                 <span class="text-slate-300 hidden sm:inline">|</span>
+                 <a href="tel:+919783813489" class="text-violet-600 hover:underline">+91-9783813489</a>
+                 <span class="text-slate-300 hidden sm:inline">|</span>
+                 <a href="https://www.linkedin.com/in/captaincross/" target="_blank" class="text-violet-600 hover:underline">LinkedIn Profile</a>
+            </div>
+            
+            <!-- Creator/Social Line (Moved to new line as requested) -->
+            <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
+                 <a href="https://www.twitch.tv/cpt_cross" target="_blank" class="text-amber-600 hover:underline font-medium">Twitch (cpt\_cross)</a>
+                 <span class="text-slate-300 hidden sm:inline">|</span>
+                 <a href="https://www.instagram.com/cpt.cross" target="_blank" class="text-amber-600 hover:underline font-medium">Instagram (cpt.cross)</a>
+            </div>
+        </section>
+
+    </main>
+    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- RESUME DATA ---
+    const resumeData = {
+        skills: [
+            { name: 'Business Development', value: 95 },
+            { name: 'Influencer Marketing', value: 90 },
+            { name: 'Community Building', value: 98 },
+            { name: 'Campaign Management', value: 85 },
+            { name: 'Remote Collaboration', value: 100 },
+            { name: 'Project Management', value: 88 },
+        ],
+        journey: [
+            {
+                role: 'Senior Business Development Executive',
+                company: 'GlitchOver',
+                period: 'Apr 2025 - Aug 2025 (Fully Remote)',
+                details: [
+                    'Led a 7-member outreach/research team to build a pipeline of over 2,000 creators.',
+                    'Secured 50+ demos and onboarded 10+ clients during the company\'s early-stage growth phase.',
+                    'Executed high-volume outreach with 250+ cold emails & 100+ DMs weekly across major platforms.',
+                    'Drove Discord community growth through strategic tournaments and giveaways.'
+                ],
+                tags: ['Business Development', 'Remote Collaboration', 'Campaign Management']
+            },
+            {
+                role: 'Brand Manager',
+                company: 'Reelax',
+                period: 'Dec 2024 - Mar 2025 (Fully Remote)',
+                details: [
+                    'Closed 5 client deals within the first 4 months through persistent outreach.',
+                    'Maintained a high tempo of 50+ daily outreach communications via cold emails and calls.',
+                    'Managed end-to-end campaign execution for small and medium-sized enterprises (SMEs).'
+                ],
+                tags: ['Business Development', 'Campaign Management']
+            },
+            {
+                role: 'Freelance Influencer & Marketing Consultant',
+                company: 'Self-Employed',
+                period: '2022 - Present (Fully Remote)',
+                details: [
+                    'Delivered successful campaigns for major brands including AMD, Lenovo, and Samsung.',
+                    'Partnered on the Waves Summit 2025 (a Govt. initiative) to lead influencer and cosplayer activations.',
+                    'Managed full project lifecycle: strategy, creator recruitment, negotiation, and outcome delivery.'
+                ],
+                tags: ['Influencer Marketing', 'Campaign Management', 'Business Development', 'Project Management']
+            },
+            {
+                role: 'Influencer Project Manager',
+                company: 'Maverik Metacast',
+                period: 'Jul 2023 - Jun 2024 (On-Site, Bengaluru)',
+                details: [
+                    'Spearheaded major online and offline campaigns for tier-1 brands including Intel (ARC graphics cards), PlayStation, Sony (InZone), Microsoft (Windows), Google (AndroidLand), and BenQ (Mobiuz).',
+                    'Orchestrated a bi-weekly, nationwide influencer initiative for Dell Alienware, successfully driving footfall to official offline retail stores across India.',
+                    'Managed long-term influencer campaigns for Viewsonic, Crucial, and other leading tech brands.',
+                    'Generated over 1 Billion impressions and 100M+ reach on a single Amazon campaign.',
+                    'Led influencer and cosplayer activations at Riot\'s Convergence, India\'s first official Valorant tournament.',
+                    'Collaborated with AOC Middle-East on a successful cross-border campaign.'
+                ],
+                tags: ['Influencer Marketing', 'Campaign Management', 'Remote Collaboration', 'Project Management']
+            },
+            {
+                role: 'Co-Founder',
+                company: 'Entrare Esports',
+                period: 'Sep 2021 - Mar 2023 (Fully Remote)',
+                details: [
+                    'Established the company mission, vision, and operational SOPs from the ground up.',
+                    'Onboarded 30+ esports athletes and 15+ influencers/cosplayers for rosters and campaigns.',
+                    'Built and scaled a thriving community of PC gamers via Discord and grassroots tournaments.',
+                    'Scouted and trained an all-female Valorant roster that competed in an international SEA tournament.'
+                ],
+                tags: ['Business Development', 'Community Building', 'Influencer Marketing']
+            },
+            {
+                role: 'Senior Community Manager',
+                company: 'BlueStacks',
+                period: 'Feb 2019 - Feb 2020 (Fully Remote)',
+                details: [
+                    'Trained and led a 12-member community management team.',
+                    'Built a 200,000+ member community by designing engaging tournaments, contests, and Q&A sessions.',
+                    'Evaluated and onboarded over 10 Mega influencers to amplify events and boost brand visibility.',
+                    'Set a record by organizing 120+ gaming tournaments in under 24 hours with a 14-member team.'
+                ],
+                tags: ['Community Building', 'Influencer Marketing', 'Project Management']
+            },
+            {
+                role: 'Event Manager',
+                company: 'CriticalX Pvt Ltd',
+                period: 'Apr 2019 - Jul 2019 (Fully Remote)',
+                details: [
+                    'Generated ideas to enhance and expand event offerings.',
+                    'Produced detailed proposals for event timelines, calendars, and social media coordination.',
+                    'Utilized specialized software to create guidelines and personalized notifications for each event.'
+                ],
+                tags: ['Project Management', 'Campaign Management']
+            },
+            {
+                role: 'Content Writer',
+                company: 'EsportsPortal.com',
+                period: 'May 2019 - Jun 2019 (Fully Remote)',
+                details: [
+                    'Researched and wrote short, accurate articles on technical news, hardware reviews, and gaming.',
+                ],
+                tags: ['Community Building']
+            },
+            {
+                role: 'Early Community Admin Roles',
+                company: 'Various (Facebook Pages & Groups)',
+                period: '2015 - 2018 (Fully Remote)',
+                details: [
+                    'Supported and moderated large online communities on Facebook (UMT, XDA-OT, Geefam) ranging from 100k to over 1.4 million members.',
+                    'Responsible for user engagement, content scheduling, and upholding community guidelines.',
+                ],
+                tags: ['Community Building']
+            }
+        ],
+        projects: [
+            { brand: 'AMD', detail: 'Currently managing an online and offline influencer marketing campaign.', tags: ['Influencer Marketing', 'Campaign Management', 'Project Management']},
+            { brand: 'Intel', detail: 'Led online campaigns for the launch of Intel ARC graphics cards.', tags: ['Influencer Marketing', 'Campaign Management'] },
+            { brand: 'Dell Alienware', detail: 'Managed a bi-weekly campaign driving footfall to offline stores across India.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'PlayStation', detail: 'Executed major offline influencer-led promotional events.', tags: ['Influencer Marketing', 'Project Management']},
+            { brand: 'Sony InZone', detail: 'Directed integrated online and offline campaigns for new hardware launches.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'Microsoft', detail: 'Spearheaded online and offline campaigns for Microsoft Windows.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'Riot Games', detail: 'Led activations for India\'s first official VALORANT tournament.', tags: ['Influencer Marketing', 'Community Building'] },
+            { brand: 'Lenovo', detail: 'Delivered freelance marketing campaigns and managed influencer partnerships.', tags: ['Influencer Marketing', 'Campaign Management'] },
+            { brand: 'Samsung', detail: 'Ran freelance influencer campaigns to support product launches.', tags: ['Influencer Marketing', 'Campaign Management'] },
+            { brand: 'Google', detail: 'Managed offline promotions for the AndroidLand experience.', tags: ['Influencer Marketing', 'Project Management']},
+            { brand: 'BenQ', detail: 'Executed online influencer campaigns for the MOBIUZ gaming monitor line.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'Viewsonic', detail: 'Managed a long-term influencer partnership campaign.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'Crucial', detail: 'Oversaw a sustained influencer marketing program.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'AOC Middle-East', detail: 'Collaborated on a cross-border influencer marketing campaign.', tags: ['Remote Collaboration', 'Influencer Marketing']},
+            { brand: 'BlueStacks', detail: 'Grew and managed a 200k+ strong user community.', tags: ['Community Building'] }
+        ]
+    };
+
+    // --- UI/CHART/FILTER LOGIC ---
+    const animateCounters = () => {
+        const counters = document.querySelectorAll('[data-target]');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const p = counter.querySelector('span') || counter;
+            const textContent = p.textContent;
+            const suffix = textContent.replace(/[0-9]/g, '');
+            
+            let count = 0;
+            const updateCount = () => {
+                const increment = target / 100;
+                if (count < target) {
+                    count = Math.ceil(count + increment);
+                    if(p.querySelector('span')) {
+                        p.querySelector('span').innerText = count;
+                    } else {
+                         p.innerText = count + suffix;
+                    }
+                    setTimeout(updateCount, 20);
+                } else {
+                    if(p.querySelector('span')) {
+                        p.querySelector('span').innerText = target;
+                    } else {
+                        p.innerText = target + suffix;
+                    }
+                }
+            };
+            updateCount();
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.querySelector('#hero'));
+
+    const skillsChartCtx = document.getElementById('skills-chart').getContext('2d');
+    new Chart(skillsChartCtx, {
+        type: 'radar',
+        data: {
+            labels: resumeData.skills.map(s => s.name.split(' ')),
+            datasets: [{
+                label: 'Skill Proficiency',
+                data: resumeData.skills.map(s => s.value),
+                backgroundColor: 'rgba(124, 58, 237, 0.2)', /* violet-600 with opacity */
+                borderColor: 'rgb(124, 58, 237)', /* violet-600 */
+                pointBackgroundColor: 'rgb(124, 58, 237)', /* violet-600 */
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(124, 58, 237)'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                    grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                    pointLabels: { 
+                        font: { size: 12, weight: '500' },
+                        color: '#475569'
+                    },
+                    ticks: {
+                        backdropColor: 'transparent',
+                        color: '#64748b',
+                        stepSize: 25,
+                        display: false
+                    },
+                     min: 0,
+                     max: 100
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+
+    const skillsFilterContainer = document.getElementById('skills-filter');
+    const timelineContainer = document.getElementById('timeline-container');
+    const projectsGrid = document.getElementById('projects-grid');
+
+    const allSkills = ['All', ...resumeData.skills.map(s => s.name)];
+    allSkills.forEach(skill => {
+        const button = document.createElement('button');
+        button.className = 'skill-btn px-4 py-2 rounded-full text-sm font-medium transition';
+        button.textContent = skill;
+        button.dataset.skill = skill;
+        if (skill === 'All') {
+            button.classList.add('bg-violet-600', 'text-white');
+        } else {
+            button.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300', 'hover:bg-slate-100');
+        }
+        skillsFilterContainer.appendChild(button);
+    });
+
+    const populateTimeline = (filter = 'All') => {
+        timelineContainer.innerHTML = '';
+        const filteredJourney = filter === 'All' ? resumeData.journey : resumeData.journey.filter(j => j.tags.includes(filter));
+
+        filteredJourney.forEach(job => {
+            const item = document.createElement('div');
+            item.className = 'timeline-item bg-white p-6 rounded-xl shadow-lg border border-slate-200';
+            item.innerHTML = `
+                <div class="absolute w-4 h-4 bg-violet-600 rounded-full -left-[39px] mt-1.5 border-4 border-white"></div>
+                <div class="cursor-pointer timeline-header flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">${job.role}</h3>
+                        <p class="text-violet-700 font-medium">${job.company}</p>
+                        <p class="text-sm text-slate-500">${job.period}</p>
+                    </div>
+                    <svg class="w-6 h-6 text-slate-500 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="timeline-body hidden mt-4 pl-4 border-l-2 border-slate-200">
+                    <ul class="list-disc list-inside text-slate-600 space-y-2">
+                        ${job.details.map(d => `<li>${d}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            timelineContainer.appendChild(item);
+        });
+    };
+
+    const populateProjects = (filter = 'All') => {
+        projectsGrid.innerHTML = '';
+        const filteredProjects = filter === 'All' ? resumeData.projects : resumeData.projects.filter(p => p.tags.includes(filter));
+        
+        filteredProjects.sort((a, b) => a.brand.localeCompare(b.brand));
+
+        filteredProjects.forEach(project => {
+            const item = document.createElement('div');
+            item.className = 'group relative overflow-hidden rounded-lg';
+            item.innerHTML = `
+                <div class="brand-logo-placeholder bg-slate-200 text-slate-700 group-hover:bg-violet-600 group-hover:text-white">
+                    ${project.brand}
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="text-center text-sm">${project.detail}</p>
+                </div>
+            `;
+            projectsGrid.appendChild(item);
+        });
+    };
+
+    skillsFilterContainer.addEventListener('click', e => {
+        if (e.target.classList.contains('skill-btn')) {
+            const skill = e.target.dataset.skill;
+            document.querySelectorAll('.skill-btn').forEach(btn => {
+                btn.classList.remove('bg-violet-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300', 'hover:bg-slate-100');
+            });
+            e.target.classList.add('bg-violet-600', 'text-white');
+            e.target.classList.remove('bg-white', 'text-slate-700', 'border', 'border-300', 'hover:bg-slate-100');
+            
+            populateTimeline(skill);
+            populateProjects(skill);
+        }
+    });
+
+    timelineContainer.addEventListener('click', e => {
+        const header = e.target.closest('.timeline-header');
+        if (header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('svg');
+            body.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    });
+    
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    populateTimeline();
+    populateProjects();
+});
+</script>
+</body>
+</html>
