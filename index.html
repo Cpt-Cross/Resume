@@ -71,14 +71,17 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Specializing in Gaming, Esports, and the Creator Economy with a proven track record of driving global growth and building massive communities.</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
-                    <p class="text-violet-600 text-4xl font-bold" data-target="8">0+</p>
+                    <!-- Years of Experience: SLOWED DOWN (4 seconds) -->
+                    <p class="text-violet-600 text-4xl font-bold" data-target="8" data-slow="true">0+</p>
                     <p class="text-slate-500 mt-2">Years of Experience</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
-                    <p class="text-violet-600 text-4xl font-bold"><span data-target="1">0</span>B+</p>
+                    <!-- Campaign Impressions: ANIMATES from 0M+ up to 1B+ (using target 1000 for 1000M) -->
+                    <p class="text-violet-600 text-4xl font-bold" data-target="1000" data-is-million-billion="true">0M+</p>
                     <p class="text-slate-500 mt-2">Campaign Impressions</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <!-- Community Members (Default speed) -->
                     <p class="text-violet-600 text-4xl font-bold" data-target="200">0K+</p>
                     <p class="text-slate-500 mt-2">Community Members Built</p>
                 </div>
@@ -503,5 +506,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
+
 
 
