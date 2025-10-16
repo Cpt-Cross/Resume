@@ -71,7 +71,7 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Specializing in Gaming, Esports, and the Creator Economy with a proven track record of driving global growth and building massive communities.</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
-                    <!-- Years of Experience: SLOWED DOWN (4 seconds) -->
+                    <!-- Years of Experience: NOW EVEN SLOWER (8 seconds) -->
                     <p class="text-violet-600 text-4xl font-bold" data-target="8" data-slow="true">0+</p>
                     <p class="text-slate-500 mt-2">Years of Experience</p>
                 </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                    <p class="text-slate-600 leading-relaxed">As a remote-first operator with extensive experience in international client relations across the US, EU, and Asia, I excel at async collaboration and driving revenue growth. My professional identity, 'Captain Cross', is recognized within the gaming industry for authentic creator outreach and scaling communities from the ground up. This identity, which includes my background as an <b>active streamer and cosplayer</b>, gives me unparalleled insight into the creator ecosystem. I combine strategic business development with hands-on campaign execution, consistently exceeding targets for major brands like Intel, Riot Games, and Samsung. My unique background as both a marketer and a content creator provides deep empathy and insight into building successful, long-term partnerships.</p>
+                    <p class="text-slate-600 leading-relaxed">As a remote-first operator with extensive experience in international client relations across the US, EU, and Asia, I excel at async collaboration and driving revenue growth. My professional identity, 'Captain Cross', is recognized within the gaming industry for authentic creator outreach and scaling communities from the ground up. This identity, which includes my background as an **active streamer and cosplayer**, gives me unparalleled insight into the creator ecosystem. I combine strategic business development with hands-on campaign execution, consistently exceeding targets for major brands like Intel, Riot Games, and Samsung. My unique background as both a marketer and a content creator provides deep empathy and insight into building successful, long-term partnerships.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
                     <div class="chart-container">
@@ -170,13 +170,11 @@
                  <a href="https://www.linkedin.com/in/captaincross/" target="_blank" class="text-violet-600 hover:underline">LinkedIn Profile</a>
             </div>
             
-            <!-- Creator/Social Line (Moved to new line as requested) -->
+            <!-- Creator/Social Line -->
             <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
-                 <a href="https://www.twitch.tv/captaincrosstv" target="_blank" class="text-violet-600 hover:underline font-medium">Twitch (Live Streaming)</a>
+                 <a href="https://www.twitch.tv/cpt_cross" target="_blank" class="text-amber-600 hover:underline font-medium">Twitch (cpt\_cross)</a>
                  <span class="text-slate-300 hidden sm:inline">|</span>
-                 <a href="https://www.instagram.com/cpt.cross" target="_blank" class="text-violet-600 hover:underline font-medium">Instagram (Cosplay & Content)</a>
-                 <span class="text-slate-300 hidden sm:inline">|</span>
-                 <a href="https://www.behance.net/captaincross" target="_blank" class="text-violet-600 hover:underline font-medium">Behance (Hi-Res Cosplay Showcase)</a>
+                 <a href="https://www.instagram.com/cpt.cross" target="_blank" class="text-amber-600 hover:underline font-medium">Instagram (cpt.cross)</a>
             </div>
         </section>
 
@@ -261,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 period: 'Feb 2019 - Feb 2020 (Fully Remote)',
                 details: [
                     'Trained and led a 12-member community management team.',
-                    'Built a 200,000+ member community by designing engaging tournaments, contests, and Q&A sessions.',
+                    'Built a 200,000+ member community; designed engaging tournaments, contests, and Q&A sessions.',
                     'Evaluated and onboarded over 10 Mega influencers to amplify events and boost brand visibility.',
                     'Set a record by organizing 120+ gaming tournaments in under 24 hours with a 14-member team.'
                 ],
@@ -310,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { brand: 'Samsung', detail: 'Ran freelance influencer campaigns to support product launches.', tags: ['Influencer Marketing', 'Campaign Management'] },
             { brand: 'Google', detail: 'Managed offline promotions for the AndroidLand experience.', tags: ['Influencer Marketing', 'Project Management']},
             { brand: 'BenQ', detail: 'Executed online influencer campaigns for the MOBIUZ gaming monitor line.', tags: ['Influencer Marketing', 'Campaign Management']},
-            { brand: 'Viewsonic', detail: 'Managed a long-term influencer partnership campaign.', tags: ['Influencer Marketing', 'Campaign Management']},
+            { brand: 'Viewsonic', detail: 'Oversaw a sustained influencer marketing program.', tags: ['Influencer Marketing', 'Campaign Management']},
             { brand: 'Crucial', detail: 'Oversaw a sustained influencer marketing program.', tags: ['Influencer Marketing', 'Campaign Management']},
             { brand: 'AOC Middle-East', detail: 'Collaborated on a cross-border influencer marketing campaign.', tags: ['Remote Collaboration', 'Influencer Marketing']},
             { brand: 'BlueStacks', detail: 'Grew and managed a 200k+ strong user community.', tags: ['Community Building'] }
@@ -322,26 +320,65 @@ document.addEventListener('DOMContentLoaded', () => {
         const counters = document.querySelectorAll('[data-target]');
         counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const p = counter.querySelector('span') || counter;
-            const textContent = p.textContent;
-            const suffix = textContent.replace(/[0-9]/g, '');
+            const isSlow = counter.hasAttribute('data-slow');
+            const isMillionBillion = counter.hasAttribute('data-is-million-billion');
+            
+            // Set speed based on requests: 8s for slow, 3s for 1M->1B, 2s for default
+            let totalSteps = 100; // Default (2s total)
+            if (isSlow) {
+                 // MODIFIED: Increased steps to 400 for a noticeable 8-second animation (400 * 20ms = 8s)
+                 totalSteps = 400; 
+            } else if (isMillionBillion) {
+                 totalSteps = 150; // Medium speed (3s total)
+            }
+            const delay = 20; 
             
             let count = 0;
+            const increment = target / totalSteps;
+
             const updateCount = () => {
-                const increment = target / 100;
                 if (count < target) {
-                    count = Math.ceil(count + increment);
-                    if(p.querySelector('span')) {
-                        p.querySelector('span').innerText = count;
+                    count = Math.min(target, count + increment); // Ensure count doesn't overshoot
+
+                    let displayValue;
+                    
+                    if (isMillionBillion) {
+                        let currentCount = Math.ceil(count);
+                        
+                        // Special logic for 1M+ to 1B+ (Target 1000 = 1000 Million)
+                        if (currentCount < 100) { 
+                            // 0M+ to 100M+ (count by 10s)
+                            displayValue = `${Math.ceil(currentCount / 10) * 10}M+`;
+                        } else if (currentCount < 500) { 
+                            // 100M+ to 500M+ (count by 50s)
+                             displayValue = `${Math.ceil(currentCount / 50) * 50}M+`; 
+                        } else if (currentCount <= 900) { 
+                             // MODIFIED: Capped M+ display at 900.
+                            // 500M+ to 900M+ (count by 100s)
+                            displayValue = `${Math.ceil(currentCount / 100) * 100}M+`; 
+                        } else {
+                            // This runs when currentCount > 900, forcing the jump to 1B+
+                            displayValue = "1B+";
+                        }
+                        
+                    } else if (target === 200) {
+                        // 200K+ community members
+                        displayValue = `${Math.ceil(count)}K+`;
                     } else {
-                         p.innerText = count + suffix;
+                        // Years of Experience (8+)
+                        displayValue = `${Math.ceil(count)}+`;
                     }
-                    setTimeout(updateCount, 20);
+
+                    counter.innerText = displayValue;
+                    setTimeout(updateCount, delay);
                 } else {
-                    if(p.querySelector('span')) {
-                        p.querySelector('span').innerText = target;
+                    // Final display value (when count reaches target)
+                    if (isMillionBillion) {
+                         counter.innerText = "1B+";
+                    } else if (target === 200) {
+                        counter.innerText = "200K+";
                     } else {
-                        p.innerText = target + suffix;
+                        counter.innerText = "8+";
                     }
                 }
             };
@@ -504,8 +541,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-
 </html>
-
-
-
